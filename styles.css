@@ -1,0 +1,12 @@
+* {
+   background: #552d2d;
+}
+body{
+    color: #6cacc5;
+    font: 18px/1.1 "Source Sans Pro", sans-serif;
+    padding: 5em 0 2em;
+    text-align: center;
+}
+h1{
+    font-weight:lighter;
+}
