@@ -1,5 +1,5 @@
 * {
-   background: #552d2d;
+   background: #1f1010;
 }
 body{
     color: #6cacc5;
@@ -9,4 +9,79 @@ body{
 }
 h1{
     font-weight:lighter;
+    background: -webkit-linear-gradient(45deg, #141474 40%, #80a0ec 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.user{
+    color: #bbb1b1;
+    font-size: 28px;
+    text-align: right;
+    margin-right: 30%;
+    margin-top: -0.5em;
+    margin-bottom: 0.5em;
+} 
+.erase{
+    margin-bottom: -2em;
+    margin-left: -11.35em;
+}
+
+button {
+    background: #0f1a6647;
+    color: #6cacc5;
+    cursor: pointer;
+    font: inherit;
+    width: 3em;
+    padding: 1em;
+    margin: 0.3em;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+button:hover{
+    opacity: 0.4;
+}
+button::after {
+    animation: zoom 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    content: attr(unit-num);
+    font-size: 100px;
+    position: absolute;
+    top: 1.5em;
+    left: 55.5%;
+    text-align: center;
+    opacity: 0;
+    width: 48px;
+}
+
+.ops:focus::after{
+    content: attr(unit-ops);
+    margin-left: -210px;
+    width: 420px;
+}
+.equals:focus::after{
+    content: attr(unit-result);
+    margin-left: -210px;
+    width: 420px;
+}
+
+/* Restart Button */
+button.restart {
+    width: 6em;
+    background-color: #141474;
+    color: #bbb1b1;
+    font-weight: 400;
+    /* margin-left: -77px; */
+    padding: 0.5em 1em;
+    position: absolute;
+    top:-20em;
+    left: 55.5%;
+    width: auto;
+    height: auto;
+}
+.restart:hover{
+    background-color: #bbb1b1;
+    color: #100a1c;
 }
