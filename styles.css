@@ -9,7 +9,7 @@ body{
 }
 h1{
     font-weight:lighter;
-    background: -webkit-linear-gradient(45deg, #141474 40%, #80a0ec 80%);
+    background: -webkit-linear-gradient(45deg, #7b7bc9 40%, #80a0ec 80%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -18,7 +18,7 @@ h1{
     color: #bbb1b1;
     font-size: 28px;
     text-align: right;
-    margin-right: 30%;
+    margin-right: 25%;
     margin-top: -0.5em;
     margin-bottom: 0.5em;
 } 
@@ -85,3 +85,8 @@ button.restart {
     background-color: #bbb1b1;
     color: #100a1c;
 }
+
+.restart:show{
+    top: 20em;
+    animation: fadein 4s;
+} 
