@@ -14,11 +14,27 @@ h1{
     -webkit-text-fill-color: transparent;
 }
 
+.calculator{
+    font-size: 20px;
+    margin: auto;
+    width: 18em;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.calculator::before,
+.calculator::after {
+    content: " ";
+    display: table;
+}
+.calculator::after{
+    clear: both;
+}
 .user{
     color: #bbb1b1;
     font-size: 28px;
     text-align: right;
-    margin-right: 25%;
+    margin-right: 10%;
     margin-top: -0.5em;
     margin-bottom: 0.5em;
 } 
@@ -68,7 +84,7 @@ button::after {
 }
 
 /* Restart Button */
-button.restart {
+.restart {
     width: 6em;
     background-color: #141474;
     color: #bbb1b1;
@@ -89,4 +105,35 @@ button.restart {
 .restart:show{
     top: 20em;
     animation: fadein 4s;
-} 
+}
+
+/* Values displayed after click */
+@keyframes zoom{
+0%{
+    transform: scale(.2);
+    opacity: 1;
+}
+70% {
+    transform: scale(1);
+}
+100% {
+    opacity: 0;
+}
+}
+
+/* Division by zero animation */
+/* @keyframes  */
+
+/* Restart button fadein */
+@keyframes fadein {
+    0%{
+        top: 20em;
+        opacity: 0;
+    }
+    50%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
