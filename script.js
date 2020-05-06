@@ -23,7 +23,7 @@
     operator;
 
 //When number is clicked, get the current number selected
-var setNum = fuction() {
+var setNum = function() {
     if (resultNum) { // if the result was displayed, restrat number
         theNum = this.getAttribute("data-num");
         resultNum = "";
@@ -32,7 +32,7 @@ var setNum = fuction() {
         theNum += this.getAttribute("data-num");
     }
 user.innerHTML = theNum; // Display current number
-
+  }
 
 //When operator is clicked, passnumber to oldNum and save operator
 var moveNum = function() {
