@@ -9,7 +9,7 @@ body{
 }
 h1{
     font-weight:lighter;
-    background: -webkit-linear-gradient(45deg, #7b7bc9 40%, #80a0ec 80%);
+    background: -webkit-linear-gradient(45deg, #7b7bc9 40%, #b4bbcc 60%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
