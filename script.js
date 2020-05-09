@@ -30,5 +30,5 @@ var setNum = function () {
   } else {
     theNum += this.getAttribute("data-num");
   }
-  console.log (user.innerHTML = theNum);
+  user.innerHTML = theNum;
 }
