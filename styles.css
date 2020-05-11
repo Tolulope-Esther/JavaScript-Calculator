@@ -22,14 +22,14 @@ h1{
     align-items: center;
     text-align: center;
 }
-.calculator::before,
+/* .calculator::before,
 .calculator::after {
     content: " ";
     display: table;
 }
 .calculator::after{
     clear: both;
-}
+} */
 .user{
     color: #bbb1b1;
     font-size: 28px;
@@ -58,7 +58,7 @@ button {
 button:hover{
     opacity: 0.4;
 }
-button::after {
+/* button::after {
     animation: zoom 1s;
     animation-iteration-count: 1;
     animation-fill-mode: both;
@@ -81,15 +81,14 @@ button::after {
     content: attr(unit-result);
     margin-left: -210px;
     width: 420px;
-}
+} */
 
 /* Restart Button */
-.restart {
+/* .restart {
     width: 6em;
     background-color: #141474;
     color: #bbb1b1;
     font-weight: 400;
-    /* margin-left: -77px; */
     padding: 0.5em 1em;
     position: absolute;
     top:-20em;
@@ -105,7 +104,7 @@ button::after {
 .restart:show{
     top: 20em;
     animation: fadein 4s;
-}
+} */
 
 /* Values displayed after click */
 @keyframes zoom{
