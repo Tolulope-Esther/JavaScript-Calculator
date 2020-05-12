@@ -1,61 +1,90 @@
+//Storing my selectors in a variable
 var erase = document.querySelector("#erase");
 var user = document.querySelector("#user");
 var ops = document.getElementsByClassName("ops");
 var equals = document.querySelector("#equals");
 var num = document.getElementsByClassName("num");
-var period = document.getElementById("period");h 
+var period = document.getElementById("period");
+
+//Temporary variables
 var currentNum = '0'; // to invkoke a function later both for current and later number
 var pendingNum;
-var resultNum = []; // array method to run the calculation 
+var evalStringArray = []; // array method to run the calculation 
 var operator;
 
-function stopPeriod() {
-  var str = '.';
-  document.getElementById("user").innerHTML += str.replace(1);
+// Event listener to operation and number buttons using for loop
+for (let i = 0; i<num.length; i++) {
+  num[i].addEventListener('click', updateCurrentNum)
+}
+for (let i = 0; i<ops.length; i++) {
+  ops[i].addEventListener('click', operation)
 }
 
-var addNum = function() {
-  oldNum = theNum;
-  theNum = "";
-  operator = getAttribute("unit-ops");
+// Functions that will update the current number
+function updateCurrentNum (el) {
+  var numText = el.target.innerText; // Or I use getAttribute _unit-num
+  if (currentNum === "0") {
+    currentNum ="";
+  }
+  // Append current number
+  currentNum += numText;
+
+  user.innerText = currentNum;
 }
 
-for (let i = 0; i < num.length; i++) {
-  let button = num[i];
-  
-  button.addEventListener("click", function() {
-    // Operators
-    // if (num === '.' && this.theNum.includes('.'))
-    // return;
-    // });
+//Operator functions
 
+//Store operator
+var storeNum = function () {
+  pendingNum = currentNum;
+  currentNum = "";
+  operator = this.getAttribute("unit-ops");
 
-if (ops == "plus") {
-  resultNum = oldNum + theNum;
-} else if (ops == "minus") {
-  resultNum = oldNum - theNum;
-} else if (ops == "multiply") {
-  resultNum = oldNum * theNum;
-} else if (ops == "divide") {
-  resultNum = oldNum / theNum;
-}
-resultNum = theNum; //if equal button is clicked without an operator
-// To display number when button is clicked
-  });
+  equals.setAttribute("unit-result", "");
 }
 
+function operation (el) {
+  var operator = el.target.innerText;
 
-// var setNum = function () {
-//     if (resultNum){
-//       theNum = this.getAttribute("unit-num");
-//       resultNum = "";
-//     } else {
-//       theNum += this.getAttribute("data-num");
-//    }
-//    console.log(user.innerHTML = theNum);
-// }
+  switch(operator) {
+    case 'add':
+      evalStringArray = pendingNum + currentNum;
+      break;
 
-// function view(val){
-//   document.getElementById("user").value += val;
-// }
-// 
+    case 'minus':
+      evalStringArray = pendingNum - currentNum;
+      break;
+
+    case ' multiply':
+      evalStringArray = pendingNum * currentNum;
+      break;
+    
+    case 'divide':
+      evalStringArray = pendingNum / currentNum;
+      break;
+
+      default:
+        evalStringArray = currentNum;        
+
+
+
+
+
+
+
+      /*pendingNum = currentNum;
+      currentNum = '0';
+      user.innerText = currentNum;
+      evalStringArray.push(pendingNum);
+      evalStringArray.push('add');
+      break;
+    case '=':
+      evalStringArray.push(currentNum);
+      var evaluation = eval(evalStringArray.join(''));
+      currentNum = exaluation + '';
+      
+      user.innerText = currentNum;
+      evalStringArray = [];*/
+
+  }
+}
