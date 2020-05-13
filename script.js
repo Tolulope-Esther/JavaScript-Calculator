@@ -33,41 +33,25 @@ function updateCurrentNum (el) {
 }
 
 //Operator functions
-
-//Store operator
-var storeNum = function () {
+function operation() {
+  if (op.indexOf("+") > -1) {operation = 1; };
+  if (ops.indexOf("-") > -1) {operation = 2; };
+  if (ops.indexOf("*") > -1) {operation = 3; };
+  if (ops.indexOf("/") > -1) {operation = 4; };
   pendingNum = currentNum;
   currentNum = "";
-  operator = this.getAttribute("unit-ops");
-
-  equals.setAttribute("unit-result", "");
+  document.user.value = currentNum;
 }
-
-function operation (el) {
-  var operator = el.target.innerText;
-
-  switch(operator) {
-    case 'add':
-      evalStringArray = pendingNum + currentNum;
-      break;
-
-    case 'minus':
-      evalStringArray = pendingNum - currentNum;
-      break;
-
-    case ' multiply':
-      evalStringArray = pendingNum * currentNum;
-      break;
-    
-    case 'divide':
-      evalStringArray = pendingNum / currentNum;
-      break;
-
-      default:
-        evalStringArray = currentNum;        
-
-
-
+//Calculate
+function calculate() {
+  if (operation == 1) {currentNum = eval(pendingNum) + eval(currentNum); };
+  if (operation == 2) {currentNum = eval(pendingNum) - eval(currentNum); };
+  if (operation == 3) {currentNum = eval(pendingNum) * eval(currentNum); };
+  if (operation == 4) {currentNum = eval(pendingNum) / eval(currentNum); };
+  operation = 0;
+  pendingNum ="0";h
+  document.user.value =currentNum;
+}
 
 
 
@@ -85,6 +69,3 @@ function operation (el) {
       
       user.innerText = currentNum;
       evalStringArray = [];*/
-
-  }
-}
