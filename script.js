@@ -12,6 +12,23 @@ var pendingNum;
 var evalStringArray = []; // array method to run the calculation 
 var operator;
 
+// Erase function
+erase.onclick = () => {
+  currentNum = '0';
+  pendingNum = undefined;
+  evalStringArray = [];
+  user.innerHTML = currentNum;
+  }
+
+// Decimal function
+// No two period is allowed in input
+period.onclick = () => {
+  if (!currentNum.includes ('.')) {
+    currentNum += '.';
+  }
+  console.log(user.innerText = currentNum);
+}
+
 // Event listener to operation and number buttons using for loop
 for (let i = 0; i<num.length; i++) {
   num[i].addEventListener('click', updateCurrentNum)
@@ -33,39 +50,43 @@ function updateCurrentNum (el) {
 }
 
 //Operator functions
-function operation() {
-  if (op.indexOf("+") > -1) {operation = 1; };
-  if (ops.indexOf("-") > -1) {operation = 2; };
-  if (ops.indexOf("*") > -1) {operation = 3; };
-  if (ops.indexOf("/") > -1) {operation = 4; };
-  pendingNum = currentNum;
-  currentNum = "";
-  document.user.value = currentNum;
-}
-//Calculate
-function calculate() {
-  if (operation == 1) {currentNum = eval(pendingNum) + eval(currentNum); };
-  if (operation == 2) {currentNum = eval(pendingNum) - eval(currentNum); };
-  if (operation == 3) {currentNum = eval(pendingNum) * eval(currentNum); };
-  if (operation == 4) {currentNum = eval(pendingNum) / eval(currentNum); };
-  operation = 0;
-  pendingNum ="0";h
-  document.user.value =currentNum;
-}
-
-
-
-
-      /*pendingNum = currentNum;
+function operation (el) {
+  var operator = el.target.innerText;
+  switch (operator) {
+    case '+':
+      pendingNum = currentNum;
+      currentNum ='0';
+      user.innerText = currentNum;
+      evalStringArray.push(pendingNum);
+      evalStringArray.push('+');
+        break;
+    case '-':
+      pendingNum = currentNum;
       currentNum = '0';
       user.innerText = currentNum;
       evalStringArray.push(pendingNum);
-      evalStringArray.push('add');
-      break;
+      evalStringArray.push('-');
+        break;
+    case '*':
+      pendingNum = currentNum;
+      currentNum = '0';
+      user.innerText = currentNum;
+      evalStringArray.push(pendingNum);
+      evalStringArray.push('*');
+        break;
+    case '/':
+      pendingNum = currentNum;
+      currentNum = '0';
+      user.innerText = currentNum;
+      evalStringArray.push(pendingNum);
+      evalStringArray.push('/');
+        break;
     case '=':
       evalStringArray.push(currentNum);
       var evaluation = eval(evalStringArray.join(''));
-      currentNum = exaluation + '';
-      
+      currentNum = evaluation + '';
       user.innerText = currentNum;
-      evalStringArray = [];*/
+      evalStringArray =[];
+        break;
+}
+}

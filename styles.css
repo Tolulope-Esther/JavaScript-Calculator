@@ -76,7 +76,7 @@ button:hover{
     content: attr(unit-ops);
     margin-left: -210px;
     width: 420px;
-}
+
 .equals:focus::after{
     content: attr(unit-result);
     margin-left: -210px;
