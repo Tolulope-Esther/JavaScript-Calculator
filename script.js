@@ -50,7 +50,7 @@ function updateCurrentNum (el) {
 }
 function updateCurrentNum (el) {
   var numText = el.target.innerText; // Or I use getAttribute _unit-num
-  if (currentNum === "0") {
+  if (currentNum === "0" && numText !== ".") {
     currentNum ="";
   }
  else if (numText === "." && currentNum.includes('.')) {
