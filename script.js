@@ -23,10 +23,10 @@ erase.onclick = () => {
 // Decimal function
 // No two period is allowed in input
 period.onclick = () => {
-  if (!currentNum.includes ('.')) {
+  if ('.' === true) {
     currentNum += '.';
   }
-  console.log(user.innerText = currentNum);
+  user.innerText = currentNum;
 }
 
 // Event listener to operation and number buttons using for loop
@@ -46,12 +46,26 @@ function updateCurrentNum (el) {
   // Append current number
   currentNum += numText;
 
-  user.innerText = currentNum;
+ user.innerText = currentNum;
 }
+function updateCurrentNum (el) {
+  var numText = el.target.innerText; // Or I use getAttribute _unit-num
+  if (currentNum === "0") {
+    currentNum ="";
+  }
+ else if (numText === "." && currentNum.includes('.')) {
+   numText = null;
+ }
+ else {
+  currentNum += numText;
+  user.innerText = currentNum;
+  console.log(currentNum);
+ }
 
+}
 //Operator functions
 function operation (el) {
-  var operator = el.target.innerText;
+ var operator = el.target.innerText;
   switch (operator) {
     case '+':
       pendingNum = currentNum;
