@@ -22,14 +22,6 @@ h1{
     align-items: center;
     text-align: center;
 }
-/* .calculator::before,
-.calculator::after {
-    content: " ";
-    display: table;
-}
-.calculator::after{
-    clear: both;
-} */
 .user{
     color: #bbb1b1;
     font-size: 28px;
@@ -57,82 +49,4 @@ button {
 }
 button:hover{
     opacity: 0.4;
-}
-/* button::after {
-    animation: zoom 1s;
-    animation-iteration-count: 1;
-    animation-fill-mode: both;
-    content: attr(unit-num);
-    font-size: 100px;
-    position: absolute;
-    top: 1.5em;
-    left: 55.5%;
-    text-align: center;
-    opacity: 0;
-    width: 48px;
-}
-
-.ops:focus::after{
-    content: attr(unit-ops);
-    margin-left: -210px;
-    width: 420px;
-
-.equals:focus::after{
-    content: attr(unit-result);
-    margin-left: -210px;
-    width: 420px;
-} */
-
-/* Restart Button */
-/* .restart {
-    width: 6em;
-    background-color: #141474;
-    color: #bbb1b1;
-    font-weight: 400;
-    padding: 0.5em 1em;
-    position: absolute;
-    top:-20em;
-    left: 55.5%;
-    width: auto;
-    height: auto;
-}
-.restart:hover{
-    background-color: #bbb1b1;
-    color: #100a1c;
-}
-
-.restart:show{
-    top: 20em;
-    animation: fadein 4s;
-} */
-
-/* Values displayed after click */
-@keyframes zoom{
-0%{
-    transform: scale(.2);
-    opacity: 1;
-}
-70% {
-    transform: scale(1);
-}
-100% {
-    opacity: 0;
-}
-}
-
-/* Division by zero animation */
-/* @keyframes  */
-
-/* Restart button fadein */
-@keyframes fadein {
-    0%{
-        top: 20em;
-        opacity: 0;
-    }
-    50%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
 }
