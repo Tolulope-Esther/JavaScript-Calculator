@@ -7,65 +7,92 @@ var num = document.getElementsByClassName("num");
 var period = document.getElementById("period");
 
 //Temporary variables
-var currentNum = '0'; // to invkoke a function later both for current and later number
-var pendingNum;
+var firstNum = '0'; // to invkoke a function later both for current and later number
+var secondNum;
 var evalStringArray = []; // array method to run the calculation 
-var operator;
+var operator =null;
 
 // Erase function
 erase.onclick = () => {
-  currentNum = '0';
-  pendingNum = undefined;
+  firstNum = '0';
+  secondNum = undefined;
   evalStringArray = [];
   user.innerHTML = currentNum;
   }
 
-// Decimal function
-// No two period is allowed in input
-period.onclick = () => {
-  if ('.' === true) {
-    currentNum += '.';
-  }
-  user.innerText = currentNum;
-}
-
 // Event listener to operation and number buttons using for loop
 for (let i = 0; i<num.length; i++) {
-  num[i].addEventListener('click', updateCurrentNum)
+  num[i].addEventListener('click', updateNum)
 }
 for (let i = 0; i<ops.length; i++) {
   ops[i].addEventListener('click', operation)
 }
-
 // Functions that will update the current number
-function updateCurrentNum (el) {
-  var numText = el.target.innerText; // Or I use getAttribute _unit-num
-  if (currentNum === "0") {
-    currentNum ="";
+function updateCurrentNum (e) {
+  var numText = e.target.innerText; // Or I use getAttribute _unit-num
+  if (firstNum === "0") {
+    firstNum ="";
   }
   // Append current number
-  currentNum += numText;
+  firstNum += numText;
 
- user.innerText = currentNum;
+ user.innerText = firstNum;
 }
-function updateCurrentNum (el) {
-  var numText = el.target.innerText; // Or I use getAttribute _unit-num
-  if (currentNum === "0" && numText !== ".") {
-    currentNum ="";
+function updateNum (e) {
+  var numText = e.target.innerText; // Or I use getAttribute _unit-num
+  if (firstNum === "0" && numText !== ".") {
+    firstNum ="";
   }
- else if (numText === "." && currentNum.includes('.')) {
+ else if (numText === "." && firstNum.includes('.')) {
    numText = null;
  }
  else {
-  currentNum += numText;
-  user.innerText = currentNum;
-  console.log(currentNum);
+  firstNum += numText;
+  user.innerText = firstNum;
  }
-
+if (operator === null) {
+  console.log(firstNum)
 }
+}
+
+//Operator function
+function operation (e) {
+  var operator = e.target.innerText;
+  if (operator === null){
+   console.log(firstNum);
+  }
+  if (operator != null) {
+    secondNum;
+  }
+// if(operator === "+") {
+//   pendingNum = currentNum;
+//   currentNum = "0";
+//   user.innerText = currentNum;
+// } else if (operator === "-") {
+//   pendingNum = currentNum;
+//   currentNum = "0";
+//   user.innerText = currentNum;
+// } else if (operator ==="*"){
+//   pendingNum = currentNum;
+//   currentNum = "0";
+//   user.innerText = currentNum;
+// } else if (operator === "/") {
+//   pendingNum = currentNum;
+//   currentNum = "0";
+//   user.innerText = currentNum;
+// }
+}
+
+//Equal functiom
+  equals.addEventListener('click', calculate);
+
+  function calculate () {
+  
+  }
+
 //Operator functions
-function operation (el) {
- var operator = el.target.innerText;
+/*function operation (e) {
+ var operator = e.target.innerText;
   switch (operator) {
     case '+':
       pendingNum = currentNum;
@@ -103,4 +130,4 @@ function operation (el) {
       evalStringArray =[];
         break;
 }
-}
+}*/
