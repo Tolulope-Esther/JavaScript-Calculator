@@ -2,7 +2,7 @@
 var erase = document.querySelector("#erase");
 var user = document.querySelector("#user");
 var ops = document.getElementsByClassName("ops");
-// var equals = document.querySelector("#equals");
+var equals = document.querySelector("#equals");
 var num = document.getElementsByClassName("num");
 var period = document.getElementById("period");
 
@@ -27,67 +27,37 @@ for (let i = 0; i<num.length; i++) {
 for (let i = 0; i<ops.length; i++) {
   ops[i].addEventListener('click', operation)
 }
+
 //Functions that will update the current number
-
-
 function updatefirstNum (e) {
   var numText = e.target.innerText;
   if (firstNum === "0") {
     firstNum = "";
   }
-  //Append first number
-  firstNum += numText;
+  // To check if firstNum already has .
 
-  user.innerText = firstNum;
-}
-function updatefirstNum (e) {
-  var numText = e.target.innerText; // Or I use getAttribute _unit-num
   if (firstNum === "0" && numText !== ".") {
     firstNum ="";
   }
-  //check if firstNum already has .
  else if (numText === "." && firstNum.includes('.')) {
    numText = null;
  }
  else {
+   // Append first number
   firstNum += numText;
  user.innerText = firstNum;
  firstNum;
  }
 }
 
-// function updatesecondNum (e) {
-//   var numText = e.target.innerText;
-//   if (secondNum === "0") {
-//     secondNum = "";
-//   }
-//   //Append first number
-//   secondNum += numText;
-
-//   user.innerText = secondNum;
-// } 
-// function updatesecondNum (e) {
-//   var numText = e.target.innerText; // Or I use getAttribute _unit-num
-//   if (secondNum === "0" && numText !== ".") {
-//     secondNum ="";
-//   }
-  //check if secondNum already has .
-//  else if (numText === "." && firstNum.includes('.')) {
-//    numText = null;
-//  }
-//  else {
-//   secondNum += numText;
-//  user.innerText = secondNum;
-//  console.log(secondNum);
-//  }
-// }
-
 //Operator function
 function operation (e) {
  var operator = e.target.innerText;
+ if (operator === null) {
+}
 if(operator === "+") {
   secondNum = firstNum;
-  firstNum = "0";
+  firstNum ="0";
   user.innerText = firstNum;
   evalStringArray.push(secondNum);
   evalStringArray.push('+');
@@ -110,23 +80,12 @@ if(operator === "+") {
   evalStringArray.push(secondNum);
   evalStringArray.push('/');
 }
-else if (operator === "="){
+else if (operator === "=") {
   evalStringArray.push(firstNum);
   var evaluation = eval(evalStringArray.join(''));
    firstNum = evaluation + '';
     user.innerText = firstNum;
     evalStringArray =[];
 }
-return firstNum ="0";
+return firstNum;
 }
-
-// function equals () {
-//   if ( equals === "=") {
-//     evalStringArray.push(firstNum);
-//     var evaluation = eval(evalStringArray.join(''));
-//      firstNum = evaluation + '';
-//       user.innerText = firstNum;
-//       evalStringArray =[];
-//   }
-//   return firstNum ="0";
-// }
