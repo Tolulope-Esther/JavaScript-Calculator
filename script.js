@@ -55,7 +55,7 @@ function operation (e) {
  var operator = e.target.innerText;
  if (operator === null) {
 }
-if(operator === "+") {
+if(operator === "+" ) {
   secondNum = firstNum;
   firstNum ="0";
   user.innerText = firstNum;
