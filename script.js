@@ -8,7 +8,7 @@ var period = document.getElementById("period");
 
 //Temporary variables
 var firstNum = '0'; // to invkoke a function later both for current and later number
-var secondNum = '0';
+var secondNum ="0 ";
 var evalStringArray = []; // array method to run the calculation 
 var operator =null;
 
@@ -53,8 +53,10 @@ function updatefirstNum (e) {
 //Operator function
 function operation (e) {
  var operator = e.target.innerText;
- if (operator === null) {
-}
+//  if (operator && isLastEnteredNumber()) {
+//    console.log(user.innerHTML);
+//    content.split(operator);
+// }
 if(operator === "+" ) {
   secondNum = firstNum;
   firstNum ="0";
