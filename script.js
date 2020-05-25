@@ -2,43 +2,41 @@
 var erase = document.querySelector("#erase");
 var user = document.querySelector("#user");
 var ops = document.getElementsByClassName("ops");
-var equals = document.querySelector("#equals");
+var equals = document.querySelector(".equals_to");
 var num = document.getElementsByClassName("num");
 var period = document.getElementById("period");
 
-//Temporary variables
-var firstNum = '0'; // to invkoke a function later both for current and later number
-var secondNum ="0 ";
+//Initialize variables
+var firstNum = ""; // to invkoke a function later both for current and later number
+var secondNum ="";
 var evalStringArray = []; // array method to run the calculation 
-var operator =null;
+var operator = null;
 
 // Erase function
 erase.onclick = () => {
   firstNum = '0';
-  secondNum = "0";
-  evalStringArray = [];
   user.innerHTML = firstNum;
+  evalStringArray = [];
   }
 
 // Event listener to operation and number buttons using for loop
 for (let i = 0; i<num.length; i++) {
-  num[i].addEventListener('click', updatefirstNum)
+  num[i].addEventListener('click', updateNum);
 }
 for (let i = 0; i<ops.length; i++) {
-  ops[i].addEventListener('click', operation)
+  ops[i].addEventListener('click', selectOperator);
 }
 
-//Functions that will update the current number
-function updatefirstNum (e) {
+equals.addEventListener('click', getResult);
+
+//Functions that will update the numbers
+function updateNum (e) {
   var numText = e.target.innerText;
-  if (firstNum === "0") {
-    firstNum = "";
+  if (firstNum === "" && numText === ".") {
+    firstNum = "0";
+ user.innerText = firstNum;
   }
   // To check if firstNum already has .
-
-  if (firstNum === "0" && numText !== ".") {
-    firstNum ="";
-  }
  else if (numText === "." && firstNum.includes('.')) {
    numText = null;
  }
@@ -51,12 +49,11 @@ function updatefirstNum (e) {
 }
 
 //Operator function
-function operation (e) {
- var operator = e.target.innerText;
-//  if (operator && isLastEnteredNumber()) {
-//    console.log(user.innerHTML);
-//    content.split(operator);
-// }
+function selectOperator (e) {
+var operator = e.target.innerText;
+if (firstNum !== "") {
+  evalStringArray.push(firstNum);
+}
 if(operator === "+" ) {
   secondNum = firstNum;
   firstNum ="0";
@@ -77,17 +74,22 @@ if(operator === "+" ) {
   evalStringArray.push('*');
 } else if (operator === "/") {
   secondNum = firstNum;
-  firstNum = "0";
+  firstNum = "";
   user.innerText = firstNum;
   evalStringArray.push(secondNum);
   evalStringArray.push('/');
 }
-else if (operator === "=") {
-  evalStringArray.push(firstNum);
-  var evaluation = eval(evalStringArray.join(''));
-   firstNum = evaluation + '';
-    user.innerText = firstNum;
-    evalStringArray =[];
-}
 return firstNum;
+}
+
+// Calculation
+function getResult (e) {
+  if (firstNum !== "") {
+    evalStringArray.push(firstNum);
+  }
+  console.log(e.target.innerText);
+  var evaluation = eval(evalStringArray.join("")).toString();
+  firstNum = evaluation + "";
+  user.innerText = firstNum;
+  evalStringArray = [];
 }
