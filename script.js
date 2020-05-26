@@ -7,7 +7,6 @@ var num = document.getElementsByClassName("num");
 var period = document.getElementById("period");
 
 //Initialize variables
-var firstNum = ""; // to invkoke a function later both for current and later number
 var secondNum ="";
 var evalStringArray = []; // array method to run the calculation 
 var operator = null;
@@ -44,7 +43,7 @@ function updateNum (e) {
    // Append first number
   firstNum += numText;
  user.innerText = firstNum;
- firstNum;
+ console.log(firstNum);
  }
 }
 
@@ -54,32 +53,13 @@ var operator = e.target.innerText;
 if (firstNum !== "") {
   evalStringArray.push(firstNum);
 }
-if(operator === "+" ) {
-  secondNum = firstNum;
-  firstNum ="0";
-  user.innerText = firstNum;
-  evalStringArray.push(secondNum);
-  evalStringArray.push('+');
-} else if (operator === "-") {
-  secondNum = firstNum;
-  firstNum = "0";
-  user.innerText = firstNum;
-  evalStringArray.push(secondNum);
-  evalStringArray.push('-');
-} else if (operator === "*"){
-  secondNum = firstNum;
-  firstNum = "0";
-  user.innerText = firstNum;
-  evalStringArray.push(secondNum);
-  evalStringArray.push('*');
-} else if (operator === "/") {
-  secondNum = firstNum;
-  firstNum = "";
-  user.innerText = firstNum;
-  evalStringArray.push(secondNum);
-  evalStringArray.push('/');
+if(evalStringArray[evalStringArray.length -1] !== ("+")) {
+  operator = e.target.innerText;
+  evalStringArray.push(operator);
 }
-return firstNum;
+firstNum = "";
+console.log(operator);
+console.log(evalStringArray);
 }
 
 // Calculation
@@ -89,7 +69,8 @@ function getResult (e) {
   }
   console.log(e.target.innerText);
   var evaluation = eval(evalStringArray.join("")).toString();
-  firstNum = evaluation + "";
-  user.innerText = firstNum;
+  firstNum = evaluation;
+  user.innerHTML = evaluation;
   evalStringArray = [];
+  console.log(typeof result);
 }
