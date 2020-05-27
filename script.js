@@ -7,15 +7,14 @@ var num = document.getElementsByClassName("num");
 var period = document.getElementById("period");
 
 //Initialize variables
-var firstNum ="";
-var evalStringArray = []; // array method to run the calculation 
+var calculation =[];
+var currentNum ="";
 var operator = null;
 
 // Erase function
 erase.onclick = () => {
-  firstNum = '0';
-  user.innerHTML = firstNum;
-  evalStringArray = [];
+  user.innerHTML = "0";
+  calculation= [];
   }
 
 // Event listener to operation and number buttons using for loop
@@ -28,49 +27,44 @@ for (let i = 0; i<ops.length; i++) {
 
 equals.addEventListener('click', getResult);
 
-//Functions that will update the numbers
+//dynamically update the numbers
 function updateNum (e) {
   var numText = e.target.innerText;
-  if (firstNum === "" && numText === ".") {
-    firstNum = "0";
- user.innerText = firstNum;
-  }
-  // To check if firstNum already has .
- else if (numText === "." && firstNum.includes('.')) {
+  if (currentNum === "" && numText === ".") {
+    currentNum = "0.";
+ user.innerText = currentNum;
+  } else if (numText === "." && currentNum.includes('.')) {
    numText = null;
- }
- else {
-   // Append first number
-  firstNum += numText;
- user.innerText = firstNum;
- console.log(firstNum);
+ } else {
+  currentNum += numText;
+ user.innerHTML = currentNum;
+ console.log(currentNum);
  }
 }
 
 //Operator function
 function selectOperator (e) {
-var operator = e.target.innerText;
-if (firstNum !== "") {
-  evalStringArray.push(firstNum);
+if (currentNum !== "") {
+  calculation.push(currentNum);
 }
-if(evalStringArray[evalStringArray.length -1] !== ("+")) {
+if(calculation[calculation.length -1] !== ("+" || "-" || "*" || "/")) {
   operator = e.target.innerText;
-  evalStringArray.push(operator);
+  calculation.push(operator);
 }
-firstNum = "";
+currentNum = "";
 console.log(operator);
-console.log(evalStringArray);
+console.log(calculation);
 }
 
 // Calculation
 function getResult (e) {
-  if (firstNum !== "") {
-    evalStringArray.push(firstNum);
+  if (currentNum !== "") {
+    calculation.push(currentNum);
   }
   console.log(e.target.innerText);
-  var evaluation = eval(evalStringArray.join("")).toString();
-  firstNum = evaluation;
-  user.innerHTML = evaluation;
-  evalStringArray = [];
+  var result = eval(calculation.join("")).toString();
+  currentNum = result;
+  user.innerHTML = result;
+  calculation = [];
   console.log(typeof result);
 }
