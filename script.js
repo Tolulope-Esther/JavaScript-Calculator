@@ -7,7 +7,7 @@ var num = document.getElementsByClassName("num");
 var period = document.getElementById("period");
 
 //Initialize variables
-var secondNum ="";
+var firstNum ="";
 var evalStringArray = []; // array method to run the calculation 
 var operator = null;
 
