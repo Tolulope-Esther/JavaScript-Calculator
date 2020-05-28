@@ -13,7 +13,7 @@ var operator = null;
 
 // Erase function
 erase.onclick = () => {
-  user.innerHTML = "0";
+  user.innerText = "0";
   calculation= [];
   }
 
@@ -52,8 +52,8 @@ if(calculation[calculation.length -1] !== ("+" || "-" || "*" || "/")) {
   calculation.push(operator);
 }
 currentNum = "";
-console.log(operator);
-console.log(calculation);
+// console.log(operator);
+// console.log(calculation);
 }
 
 // Calculation
@@ -61,10 +61,11 @@ function getResult (e) {
   if (currentNum !== "") {
     calculation.push(currentNum);
   }
-  console.log(e.target.innerText);
-  var result = eval(calculation.join("")).toString();
-  currentNum = result;
-  user.innerHTML = result;
+ // console.log(e.target.innerText);
+
+  var result = eval(calculation.join(""));
+  currentNum = result + "";
+  user.innerText = currentNum;
   calculation = [];
-  console.log(typeof result);
+ // console.log(typeof result);
 }
