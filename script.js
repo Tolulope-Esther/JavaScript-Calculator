@@ -8,12 +8,15 @@ var period = document.getElementById("period");
 
 //Initialize variables
 var calculation =[];
+var previousNum = "";
 var currentNum ="";
 var operator = null;
 
 // Erase function
 erase.onclick = () => {
-  user.innerText = "0";
+  user.innerHTML = "0";
+  currentNum = "";
+  pendingNum = "";
   calculation= [];
   }
 
@@ -29,10 +32,13 @@ equals.addEventListener('click', getResult);
 
 //dynamically update the numbers
 function updateNum (e) {
+  if (operator === "" && previousNum !== ""){
+  previousNum = "";
+  }
   var numText = e.target.innerText;
   if (currentNum === "" && numText === ".") {
     currentNum = "0.";
- user.innerText = currentNum;
+ user.innerHTML = currentNum;
   } else if (numText === "." && currentNum.includes('.')) {
    numText = null;
  } else {
@@ -44,12 +50,20 @@ function updateNum (e) {
 
 //Operator function
 function selectOperator (e) {
+if (previousNum !== "") {
+  calculation.push(previousNum);
+  if(calculation[calculation.length -1] !== ("+" || "-" || "*" || "/")) {
+    operator = e.target.innerText;
+    calculation.push(operator);
+}
+previousNum = "";
+}
 if (currentNum !== "") {
   calculation.push(currentNum);
+  if(calculation[calculation.length -1] !== ("+" || "-" || "*" || "/")) {
+    operator = e.target.innerText;
+    calculation.push(operator);
 }
-if(calculation[calculation.length -1] !== ("+" || "-" || "*" || "/")) {
-  operator = e.target.innerText;
-  calculation.push(operator);
 }
 currentNum = "";
 // console.log(operator);
@@ -63,9 +77,12 @@ function getResult (e) {
   }
  // console.log(e.target.innerText);
 
-  var result = eval(calculation.join(""));
-  currentNum = result + "";
-  user.innerText = currentNum;
+  var result = eval(calculation.join("")).toString();
+  // currentNum = result;
+  user.innerHTML = result;
+  previousNum = result;
+  currentNum = "";
   calculation = [];
+  operator = null;
  // console.log(typeof result);
 }
