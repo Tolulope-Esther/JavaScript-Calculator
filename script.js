@@ -21,7 +21,7 @@ erase.onclick = () => {
   }
 
 // Event listener to operation and number buttons using for loop
-for (let i = 0; i<num.length; i++) {
+for ( i = 0; i<num.length; i++) {
   num[i].addEventListener('click', updateNum);
 }
 for (let i = 0; i<ops.length; i++) {
