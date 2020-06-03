@@ -12,18 +12,8 @@ let previousNum = "";
 let currentNum ="";
 let operator = null;
 
-// Event listener to operator and number buttons using for loop
-for (let i = 0; i<num.length; i++) {
-  num[i].addEventListener('click', updateNum);
-}
-for (i = 0; i<ops.length; i++) {
-  ops[i].addEventListener('click', selectOperator);
-}
-
-equals.addEventListener('click', getResult);
-
 //dynamically update the numbers
-function updateNum (e) {
+const updateNum = (e) => {
   if (operator === "" && previousNum !== ""){
   previousNum = "";
   }
@@ -41,29 +31,29 @@ function updateNum (e) {
 }
 
 //Operator function
-function selectOperator (e) {
-if (previousNum !== "") {
-  calculation.push(previousNum);
-  if(calculation[calculation.length -1] !== ("+" || "-" || "*" || "/")) {
-    operator = e.target.innerText;
-    calculation.push(operator);
-}
-previousNum = "";
-}
-if (currentNum !== "") {
-  calculation.push(currentNum);
-  if(calculation[calculation.length -1] !== ("+" || "-" || "*" || "/")) {
-    operator = e.target.innerText;
-    calculation.push(operator);
-}
-}
-currentNum = "";
-// console.log(operator);
-// console.log(calculation);
-}
-
+const selectOperator = (e) => {
+  if (previousNum !== "") {
+    calculation.push(previousNum);
+    if(calculation[calculation.length -1] !== ("+" || "-" || "*" || "/")) {
+      operator = e.target.innerText;
+      calculation.push(operator);
+  }
+  previousNum = "";
+  }
+  if (currentNum !== "") {
+    calculation.push(currentNum);
+    if(calculation[calculation.length -1] !== ("+" || "-" || "*" || "/")) {
+      operator = e.target.innerText;
+      calculation.push(operator);
+  }
+  }
+  currentNum = "";
+  // console.log(operator);
+  // console.log(calculation);
+  }
+  
 // Calculation
-function getResult (e) {
+const getResult = (e) => {
   if (currentNum !== "") {
     calculation.push(currentNum);
   }
@@ -78,6 +68,18 @@ const result = eval(calculation.join("")).toString();
   operator = null;
  // console.log(typeof result);
 }
+
+
+// Event listener to operator and number buttons using for loop
+for (let i = 0; i<num.length; i++) {
+  num[i].addEventListener('click', updateNum);
+}
+for (i = 0; i<ops.length; i++) {
+  ops[i].addEventListener('click', selectOperator);
+}
+
+equals.addEventListener('click', getResult);
+
 
 // Erase function
 erase.onclick = () => {
