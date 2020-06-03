@@ -1,30 +1,22 @@
-//Storing my selectors in a variable
-var erase = document.querySelector("#erase");
-var user = document.querySelector("#user");
-var ops = document.getElementsByClassName("ops");
-var equals = document.querySelector(".equals_to");
-var num = document.getElementsByClassName("num");
-var period = document.getElementById("period");
+//Storing my selecmntors in a variable
+const erase = document.querySelector("#erase");
+const user = document.querySelector("#user");
+const ops = document.getElementsByClassName("ops");
+const equals = document.querySelector(".equals_to");
+const num = document.getElementsByClassName("num");
+const period = document.getElementById("period");
 
 //Initialize variables
-var calculation =[];
-var previousNum = "";
-var currentNum ="";
-var operator = null;
+let calculation =[];
+let previousNum = "";
+let currentNum ="";
+let operator = null;
 
-// Erase function
-erase.onclick = () => {
-  user.innerHTML = "0";
-  currentNum = "";
-  pendingNum = "";
-  calculation= [];
-  }
-
-// Event listener to operation and number buttons using for loop
-for ( i = 0; i<num.length; i++) {
+// Event listener to operator and number buttons using for loop
+for (let i = 0; i<num.length; i++) {
   num[i].addEventListener('click', updateNum);
 }
-for (let i = 0; i<ops.length; i++) {
+for (i = 0; i<ops.length; i++) {
   ops[i].addEventListener('click', selectOperator);
 }
 
@@ -35,10 +27,10 @@ function updateNum (e) {
   if (operator === "" && previousNum !== ""){
   previousNum = "";
   }
-  var numText = e.target.innerText;
+  const numText = e.target.innerText;
   if (currentNum === "" && numText === ".") {
-    currentNum = "0.";
- user.innerHTML = currentNum;
+    currentNum = "0";
+  user.innerHTML = currentNum;
   } else if (numText === "." && currentNum.includes('.')) {
    numText = null;
  } else {
@@ -77,7 +69,7 @@ function getResult (e) {
   }
  // console.log(e.target.innerText);
 
-  var result = eval(calculation.join("")).toString();
+const result = eval(calculation.join("")).toString();
   // currentNum = result;
   user.innerHTML = result;
   previousNum = result;
@@ -86,3 +78,11 @@ function getResult (e) {
   operator = null;
  // console.log(typeof result);
 }
+
+// Erase function
+erase.onclick = () => {
+  user.innerHTML = "0";
+  currentNum = "";
+  pendingNum = "";
+  calculation= [];
+  }
